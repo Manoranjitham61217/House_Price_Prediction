@@ -2,19 +2,15 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Center layout
 st.set_page_config(page_title="House Price Prediction", layout="centered")
 
-# Load components
 model = joblib.load("Hp_Model.pkl")
 scaler = joblib.load("Scaler.pkl")
 selector = joblib.load("Features_selected.pkl")
 
-# Extract final features
 all_features = selector.feature_names_in_
 selected_features = all_features[selector.get_support()]
 
-# Center Content Wrapper
 with st.container():
     st.markdown(
         "<h1 style='text-align: center;'>🏠 House Price Classification</h1>",
@@ -26,9 +22,7 @@ with st.container():
         "</p>",
         unsafe_allow_html=True,
     )
-
-    # Place inputs in a centered column
-    col = st.columns([1,2,1])[1]  # middle column wider
+    col = st.columns([1,2,1])[1]
     user_data = {}
 
     with col:
